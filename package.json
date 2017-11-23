@@ -1,0 +1,15 @@
+{
+  "name": "yelp-explorer",
+  "version": "1.0.0",
+  "description": "Yelp data explorer written in NodeJS",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Leonard Law <leon.wlaw@gmail.com>",
+  "license": "MIT"
+}
