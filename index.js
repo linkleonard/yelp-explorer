@@ -52,7 +52,14 @@ MongoClient.connect(process.env.DATABASE_URL)
       .pipe(es.map(getStreamRowImporter(collection)))
       .on('close', () => {
         console.log('Record parsing complete!');
-        db.close();
+        collection.stats().then((stats) => {
+          console.log(`Collection now contains: ${stats.count} objects`);
+        }).then(
+          // Close the database connection, regardless if the stats retrieval
+          // succeeded or failed.
+          () => db.close(),
+          () => db.close(),
+        );
       })
       .pipe(reduce(count, 0))
       .pipe(es.map(report))
